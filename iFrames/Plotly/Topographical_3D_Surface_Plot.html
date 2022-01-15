@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Topographical 3D Surface Plot</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	
+	
+	</head>
+
+<body>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+	<script>
+		
+		Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/api_docs/mt_bruno_elevation.csv', function(err, rows){
+		function unpack(rows, key) {
+		  return rows.map(function(row) { return row[key]; });
+		}
+		  
+		var z_data=[ ]
+		for(i=0;i<24;i++)
+		{
+		  z_data.push(unpack(rows,i));
+		}
+
+		var data = [{
+				   z: z_data,
+				   type: 'surface'
+				}];
+		console.dir(data);
+		
+		//var
+		//data = [
+		//			{
+						/*z:[
+						
+						//["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], 
+						/*["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], 
+						["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], 
+						["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"] 
+						*/
+						//["3", "4", "5", "0", "1", "2", "0", "1", "2", "0", "1", "2"],
+						//["3", "4", "5", "0", "1", "2", "0", "1", "2", "0", "1", "2"],
+						//["3", "4", "5", "0", "1", "2", "0", "1", "2", "0", "1", "2"]
+						//]
+						/*
+						["0", "1", "4"],
+						["0.707107", "0.707107", "2"],
+						["1", "0", "4"],
+						["0.707107", "-0.707107", "2"],
+						["0", "-1", "7"],
+						["-0.707107", "-0.707107", "2"],
+						["-1", "0", "7"],
+						["-0.707107", "0.707107", "2"]
+						]
+						*/
+						/*["1","0", "1", "1"],
+						["2", "0.707107", "0.707107", "2"],
+						["3", "1", "0", "3"],
+						["4", "0.707107", "-0.707107", "4"],
+						["5", "0", "-1", "5"],
+						["6","-0.707107", "-0.707107", "6"],
+						["7","-1", "0", "7"],
+						["8", "-0.707107", "0.707107", "8"]
+						*/
+						/*
+						x: ["1.0", "0.71", "0.0", "-0.71", "-1.0", "-0.71", "0.0", "0.71"],
+						y: ["0.0", "0.71", "1.0", "0.71", "0.0", "-0.71", "-1.0", "-0.71"],
+						z: ["1", "2", "3", "4", "5", "6", "7", "8"],
+						ids: ["1", "2", "3", "4", "5", "6", "7", "8"]
+						*/
+						//z: ["1.0", "2.0", "3.0", "4.0", "5.0", "6.0", "7.0", "8.0"],
+						/*x: ["7", "8", "10"],
+						y: ["3", "2", "1"],
+						z: ["5", "7", "8"]
+						*/
+				//		x: [7, 8, 10],
+				//		y: [3, 2, 1],
+				//		z: [5, 7, 8]
+						//ids: ["t1", "t2", "t3"]
+						
+						
+				//		,
+				//	   type: 'surface'
+				//	}
+				//];
+				
+		/*var trace1 = {
+			x: [0, 1, 2, 3, 4, 5, 6],
+			y: [1, 9, 4, 7, 5, 2, 4],
+			mode: 'markers',
+			marker: {
+				size: [20, 40, 25, 10, 60, 90, 30],
+			}
+		};
+
+		data = [trace1];
+		*/
+		console.dir(data);
+		
+		var layout = {
+		  title: 'Mt Bruno Elevation',
+		  autosize: false,
+		  width: 500,
+		  height: 500,
+		  margin: {
+			l: 65,
+			r: 50,
+			b: 65,
+			t: 90,
+		  }
+		};
+		Plotly.newPlot('myDiv', data, layout);
+		//Plotly.newPlot('myDiv', data, layout, {staticPlot: true});
+		});
+	</script>
+	<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+</body>
+</html>
