@@ -6,4 +6,4 @@
   - Plotly
 - И для души - красивые примеры Three.js
 
-[Demo](https://andrey-gorbachev.github.io/Javascript-Visualization/)
+[Demo](https://andrey-gorbachev.github.io/Javascript-Visualization)
